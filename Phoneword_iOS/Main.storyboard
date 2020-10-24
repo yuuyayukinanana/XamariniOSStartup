@@ -44,10 +44,15 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="688" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
                                 <rect key="frame" x="52" y="423" width="311" height="30"/>
                                 <state key="normal" title="CallHistory"/>
-                                <connections>
-                                    <segue id="790" destination="716" kind="show"/>
-                                </connections>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2484" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                <rect key="frame" x="52" y="502" width="311" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="selfhistory"/>
+                                <connections>
+                                    <segue id="3623" destination="716" kind="show"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -57,6 +62,7 @@
                         <outlet property="TranslateButton" destination="199" id="name-outlet-199"/>
                         <outlet property="CallButton" destination="400" id="name-outlet-400"/>
                         <outlet property="CallHistoryButton" destination="688" id="name-outlet-688"/>
+                        <outlet property="SelfHistoryButton" destination="2484" id="name-outlet-2484"/>
                     </connections>
                     <navigationItem id="683" key="navigationItem" title="Phoneword"/>
                 </viewController>
@@ -81,7 +87,7 @@
         </scene>
         <scene sceneID="715">
             <objects>
-                <tableViewController id="716" sceneMemberID="viewController" customClass="CallHistoryController" title="Call History">
+                <tableViewController id="716" sceneMemberID="viewController" customClass="CallHistoryController" title="Call History" storyboardIdentifier="CallHistoryController" useStoryboardIdentifierAsRestorationIdentifier="YES">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="717">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

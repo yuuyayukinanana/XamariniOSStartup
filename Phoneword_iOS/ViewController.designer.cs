@@ -28,6 +28,10 @@ namespace Phoneword_iOS
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton SelfHistoryButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton TranslateButton { get; set; }
 
         void ReleaseDesignerOutlets ()
@@ -45,6 +49,11 @@ namespace Phoneword_iOS
             if (PhoneNumberText != null) {
                 PhoneNumberText.Dispose ();
                 PhoneNumberText = null;
+            }
+
+            if (SelfHistoryButton != null) {
+                SelfHistoryButton.Dispose ();
+                SelfHistoryButton = null;
             }
 
             if (TranslateButton != null) {

@@ -36,7 +36,7 @@ namespace Phoneword_iOS
                 PhoneNumberText.ResignFirstResponder();
 
                 //テキストが入っている場合はボタンを有効化
-                if(translatedNumber == "")
+                if (translatedNumber == "")
                 {
                     //ボタンのテキストを変更
                     CallButton.SetTitle("Call", UIControlState.Normal);
@@ -44,12 +44,13 @@ namespace Phoneword_iOS
                 }
                 else
                 {
-                    CallButton.SetTitle($"Call{translatedNumber}",UIControlState.Normal);
+                    CallButton.SetTitle($"Call{translatedNumber}", UIControlState.Normal);
                     CallButton.Enabled = true;
                 }
             };
 
-            CallButton.TouchUpInside += (object sender, EventArgs e) => {
+            CallButton.TouchUpInside += (object sender, EventArgs e) =>
+            {
 
 
                 //リストに電話番号を追加
@@ -67,17 +68,33 @@ namespace Phoneword_iOS
                 }
             };
 
+            //セグエ無し遷移（viewControllerにストーリーボードIDの設定が必要）
+            CallHistoryButton.TouchUpInside += (object sender, EventArgs e) => {
+                // 対象のコントローラーを設定（InstantiateViewControllerの引数はストーリボードID）
+                CallHistoryController callHistory = this.Storyboard.InstantiateViewController("CallHistoryController") as CallHistoryController;
+                if (callHistory != null)
+                {
+                    callHistory.PhoneNumbers = PhoneNumbers;
+                    this.NavigationController.PushViewController(callHistory, true);
+                }
+            };
         }
 
 
+
+
+        //履歴に遷移するときにデータを渡す処理をオーバーライド
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender)
         {
             base.PrepareForSegue(segue, sender);
 
+            //セグエ対象のコントローラーを決める（キャストする）
             var callHistoryController = segue.DestinationViewController as CallHistoryController;
 
+            //処理が落ちないようにnullチェック
             if (callHistoryController != null)
             {
+                //リストを履歴のコントローラーに渡す
                 callHistoryController.PhoneNumbers = PhoneNumbers;
             }
         }
